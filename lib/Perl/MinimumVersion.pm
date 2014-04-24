@@ -51,13 +51,8 @@ use Perl::Critic::Utils 1.104   qw{
 use PPIx::Regexp        0.033;
 use Perl::MinimumVersion::Reason ();
 
-our ($VERSION, @ISA, @EXPORT_OK, %CHECKS, @CHECKS_RV ,%MATCHES);
+our (@ISA, @EXPORT_OK, %CHECKS, @CHECKS_RV ,%MATCHES);
 BEGIN {
-	$VERSION = '1.33';
-
-	# Only needed for dev releases, comment out otherwise
-	# $VERSION = eval $VERSION;
-
 	# Export the PMV convenience constant
 	@ISA       = 'Exporter';
 	@EXPORT_OK = 'PMV';

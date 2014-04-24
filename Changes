@@ -8,6 +8,7 @@ Revision history for Perl module Perl::MinimumVersion
     - deprecate.pm requires perl 5.12 (Alexandr Ciornii)
     - require new version of PPIx::Regexp
     - detect while(readdir $dh) (Alexandr Ciornii)
+    - Switched to Dist::Zilla
     - Added required versions of modules when use'ing them
 
 1.32 Tue 16 Jan 2013

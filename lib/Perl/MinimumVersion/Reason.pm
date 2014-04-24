@@ -8,14 +8,6 @@ use 5.006;
 use strict;
 use warnings;
 
-use vars qw{$VERSION};
-BEGIN {
-	$VERSION = '1.32';
-
-	# Only needed for dev releases, comment out otherwise
-	# $VERSION = eval $VERSION;
-}
-
 sub new {
 	my $class = shift;
 	return bless { @_ }, $class;
