@@ -37,23 +37,23 @@ covers it.
 use 5.006;
 use strict;
 use warnings;
-use version      ();
-use Carp         ();
-use Exporter     ();
-use List::Util   qw(max first);
-use Params::Util ('_INSTANCE', '_CLASS');
-use PPI::Util    ('_Document');
-use PPI          ();
-use Perl::Critic::Utils 1.104 qw{
+use version             0.76   ();
+use Carp                        ();
+use Exporter                    ();
+use List::Util          1.20    qw(max first);
+use Params::Util        0.25    ('_INSTANCE', '_CLASS');
+use PPI::Util                   ('_Document');
+use PPI                 1.215   ();
+use Perl::Critic::Utils 1.104   qw{
 	:classification
 	:ppi
 };
-use PPIx::Regexp;
+use PPIx::Regexp        0.033;
 use Perl::MinimumVersion::Reason ();
 
 our ($VERSION, @ISA, @EXPORT_OK, %CHECKS, @CHECKS_RV ,%MATCHES);
 BEGIN {
-	$VERSION = '1.32';
+	$VERSION = '1.33';
 
 	# Only needed for dev releases, comment out otherwise
 	# $VERSION = eval $VERSION;

@@ -8,8 +8,8 @@ BEGIN {
 	$^W = 1;
 }
 
-use Test::More 'tests' => 3;
-use Test::Script;
+use Test::More      0.47    'tests' => 3;
+use Test::Script    1.03;
 
 ok( $] >= 5.005, 'Your perl is new enough' );
 

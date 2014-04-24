@@ -8,10 +8,10 @@ BEGIN {
 	$^W = 1;
 }
 
-use Test::More tests => 119;
-use version;
+use Test::More 0.47 tests => 119;
+use version 0.76;
 use File::Spec::Functions ':ALL';
-use PPI;
+use PPI 1.215;
 use Perl::MinimumVersion 'PMV';
 
 sub version_is {

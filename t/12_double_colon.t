@@ -6,7 +6,7 @@ BEGIN {
 	$^W = 1;
 }
 
-use Test::More;
+use Test::More 0.47;
 
 #use version;
 use Perl::MinimumVersion;

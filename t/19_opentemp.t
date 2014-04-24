@@ -6,7 +6,7 @@ BEGIN {
 	$^W = 1;
 }
 
-use Test::More;
+use Test::More 0.47;
 
 use Perl::MinimumVersion;
 my @examples_not=(

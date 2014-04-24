@@ -1,5 +1,6 @@
-Revision history for Perl extension Perl-MinimumVersion
+Revision history for Perl module Perl::MinimumVersion
 
+1.33 2014-04-24
     - Internals::SvREADONLY requires perl 5.8.0
     - handle features upto lexical_subs, which requires 5.18.0
       state, switch, unicode_strings, unicode_eval, evalbytes,
@@ -7,6 +8,7 @@ Revision history for Perl extension Perl-MinimumVersion
     - deprecate.pm requires perl 5.12 (Alexandr Ciornii)
     - require new version of PPIx::Regexp
     - detect while(readdir $dh) (Alexandr Ciornii)
+    - Added required versions of modules when use'ing them
 
 1.32 Tue 16 Jan 2013
     - require new version of PPIx::Regexp

@@ -8,7 +8,7 @@ BEGIN {
 	$^W = 1;
 }
 
-use Test::More tests => 10;
+use Test::More 0.47 tests => 10;
 use Perl::MinimumVersion;
 
 # Perl 5.10 operators
