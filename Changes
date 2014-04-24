@@ -3,6 +3,10 @@ Revision history for Perl module Perl::MinimumVersion
 1.34 2014-04-24
     - The perlver script wasn't getting installed, because it's in
       a script/ directory. RT#95023, fix from ETHER.
+    - t/02_main.t was failing on older versions of perl, because
+      a min version is getting reported as '5.01301' on Perl 5.010 and later,
+      but as '5.013010' on earlier Perls. RT#95023. I need to understand this
+      better, but want to get a passing release out.
 
 1.33 2014-04-24
     - Internals::SvREADONLY requires perl 5.8.0

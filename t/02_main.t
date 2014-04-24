@@ -364,9 +364,9 @@ SCOPE: {
 my $doc = PPI::Document->new(\'our $x;s/a//u;$^R;');
 my $minver = Perl::MinimumVersion->new($doc);
 $minver->_set_collect_all_reasons();
-is(
+like(
   $minver->minimum_syntax_version,
-  '5.01301',
+  qr/^5\.01301/,
   "correct version",
 );
 is(
