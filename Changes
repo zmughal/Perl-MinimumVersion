@@ -1,5 +1,9 @@
 Revision history for Perl module Perl::MinimumVersion
 
+1.34 2014-04-24
+    - The perlver script wasn't getting installed, because it's in
+      a script/ directory. RT#95023, fix from ETHER.
+
 1.33 2014-04-24
     - Internals::SvREADONLY requires perl 5.8.0
     - handle features upto lexical_subs, which requires 5.18.0
