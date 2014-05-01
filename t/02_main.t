@@ -366,7 +366,7 @@ my $minver = Perl::MinimumVersion->new($doc);
 $minver->_set_collect_all_reasons();
 like(
   $minver->minimum_syntax_version,
-  qr/^5\.01301/,
+  qr/^5\.013010?$/,
   "correct version",
 );
 is(
