@@ -76,7 +76,6 @@ BEGIN {
 		_unquoted_versions      => version->new('5.008.001'),
 		_perl_5008_pragmas      => version->new('5.008'),
 		_constant_hash          => version->new('5.008'),
-		_use_base_exporter      => version->new('5.008'),
 		_local_soft_reference   => version->new('5.008'),
 		_use_carp_version       => version->new('5.008'),
 		_open_temp              => version->new('5.008'),
@@ -1101,19 +1100,6 @@ sub _any_INIT_blocks {
 		$_[1]->isa('PPI::Statement::Scheduled')
 		and
 		$_[1]->type eq 'INIT'
-	} );
-}
-
-# use base 'Exporter' doesn't work reliably everywhere until 5.008
-sub _use_base_exporter {
-	shift->Document->find_first( sub {
-		$_[1]->isa('PPI::Statement::Include')
-		and
-		$_[1]->module eq 'base'
-		and
-		# Add the "not colon" characters to avoid accidentally
-		# colliding with any other Exporter-named modules
-		$_[1]->content =~ /[^:]\bExporter\b[^:]/
 	} );
 }
 

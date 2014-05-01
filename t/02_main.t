@@ -8,7 +8,7 @@ BEGIN {
 	$^W = 1;
 }
 
-use Test::More 0.47 tests => 119;
+use Test::More 0.47 tests => 116;
 use version 0.76;
 use File::Spec::Functions ':ALL';
 use PPI 1.215;
@@ -251,14 +251,6 @@ is(
   '',
   "also works as object method with limit: no constraints found",
 );
-}
-
-# Check the use of constant hashes
-SCOPE: {
-my $v = version_is( <<'END_PERL', '5.008', 'use base "Exporter" is a 5.008 dep' );
-use base 'Exporter';
-1;
-END_PERL
 }
 
 
