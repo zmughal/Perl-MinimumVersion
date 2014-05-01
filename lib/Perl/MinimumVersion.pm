@@ -68,6 +68,7 @@ BEGIN {
 		_perl_5010_pragmas      => version->new('5.010'),
 		_perl_5010_operators    => version->new('5.010'),
 		_perl_5010_magic        => version->new('5.010'),
+		_state_declaration      => version->new('5.010'),
 
 		# Various small things
 		_bugfix_magic_errno     => version->new('5.008.003'),
@@ -858,6 +859,14 @@ sub _yada_yada_yada {
 		if (@child == 2) {
 			$child[1]->isa('PPI::Token::Structure')
 		}
+	} );
+}
+
+sub _state_declaration {
+	shift->Document->find_first( sub {
+		$_[1]->isa('PPI::Statement::Variable')
+        and ($_[1]->children)[0]->isa('PPI::Token::Word')
+        and ($_[1]->children)[0]->content eq 'state'
 	} );
 }
 
