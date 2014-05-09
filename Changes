@@ -1,5 +1,9 @@
 Revision history for Perl module Perl::MinimumVersion
 
+1.36 2014-05-09
+    - CHECK block requires 5.6.2
+    - UNITCHECK block requires 5.10.0
+
 1.35 2014-05-02
     - 'state' requires perl 5.10.0, even if you don't also see
       "use feature 'state'", because you can also write "use 5.010" to

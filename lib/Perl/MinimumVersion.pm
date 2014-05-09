@@ -113,6 +113,7 @@ BEGIN {
 	);
 	@CHECKS_RV = ( #subs that return version
 	    '_feature_bundle','_regex','_each_argument','_binmode_2_arg',
+        '_scheduled_blocks',
 	);
 
 	# Predefine some indexes needed by various check methods
@@ -602,6 +603,35 @@ sub _feature_bundle {
 		return '';
 	} );
 	return (defined($version)?"$version.0":undef, $obj);
+}
+
+my %SCHEDULED_BLOCK =
+(
+    'INIT'      => '5.006',
+    'CHECK'     => '5.006002',
+    'UNITCHECK' => '5.010',
+);
+
+sub _scheduled_blocks
+{
+    my @versions;
+    my ($version, $obj);
+
+	shift->Document->find( sub {
+		$_[1]->isa('PPI::Statement::Scheduled') or return '';
+        ($_[1]->children)[0]->isa('PPI::Token::Word') or return '';
+        my $function = (($_[1]->children)[0])->content;
+        exists( $SCHEDULED_BLOCK{ $function }) or return '';
+
+        my $v = $SCHEDULED_BLOCK{ ($_[1]->children)[0]->content };
+        if ($v and $v > ($version || 0) ) {
+            $version = $v;
+            $obj = $_[1];
+        }
+
+		return '';
+	} );
+	return (defined($version) ? $version : undef, $obj);
 }
 
 sub _regex {
