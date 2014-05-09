@@ -59,6 +59,8 @@ BEGIN {
 
 	# The primary list of version checks
 	%CHECKS = (
+        _stacked_labels         => version->new('5.014'),
+
 		_yada_yada_yada         => version->new('5.012'),
 		_pkg_name_version       => version->new('5.012'),
 		_postfix_when           => version->new('5.012'),
@@ -897,6 +899,22 @@ sub _state_declaration {
         and ($_[1]->children)[0]->isa('PPI::Token::Word')
         and ($_[1]->children)[0]->content eq 'state'
 	} );
+}
+
+sub _stacked_labels {
+	shift->Document->find_first( sub {
+		$_[1]->isa('PPI::Statement::Compound') || return '';
+		$_[1]->schild(0)->isa('PPI::Token::Label') || return '';
+
+		my $next = $_[1]->snext_sibling || return '';
+
+        if (   $next->isa('PPI::Statement::Compound')
+            && $next->schild(0)->isa('PPI::Token::Label')) {
+            return 1;
+        }
+
+        0;
+    } );
 }
 
 sub _internals_svreadonly {
