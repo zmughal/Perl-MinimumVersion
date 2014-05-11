@@ -5,6 +5,8 @@ Revision history for Perl module Perl::MinimumVersion
       that I misinterpreted what the 5.14 change was, and broke at least one dist.
       Commented out the check in MinimumVersion.pm, and the specific subtests.
       Apologies to HMBRAND and all others affected
+    - The way I was comparing versions in one of the new tests in 1.36 wasn't portable
+      across old versions of Perl. Thanks to Paul Howarth for RT#95528.
 
 1.36 2014-05-09
     - CHECK block requires 5.6.2

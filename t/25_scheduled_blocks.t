@@ -19,6 +19,6 @@ plan tests => scalar(keys %examples);
 foreach my $example (sort keys %examples) {
 	my $p = Perl::MinimumVersion->new(\$example);
     my $v = $p->minimum_version;
-	is( $v, $examples{$example}, $example )
+	ok( $v == $examples{$example}, $example )
 	  or do { diag "\$\@: $@" if $@ };
 }
