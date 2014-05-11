@@ -1,5 +1,11 @@
 Revision history for Perl module Perl::MinimumVersion
 
+1.37 2014-05-11
+    - Removed the check for "stacked labels" that I added in 1.36, as it appears
+      that I misinterpreted what the 5.14 change was, and broke at least one dist.
+      Commented out the check in MinimumVersion.pm, and the specific subtests.
+      Apologies to HMBRAND and all others affected
+
 1.36 2014-05-09
     - CHECK block requires 5.6.2
     - UNITCHECK block requires 5.10.0

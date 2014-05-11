@@ -59,7 +59,7 @@ BEGIN {
 
 	# The primary list of version checks
 	%CHECKS = (
-        _stacked_labels         => version->new('5.014'),
+        # _stacked_labels         => version->new('5.014'),
 
 		_yada_yada_yada         => version->new('5.012'),
 		_pkg_name_version       => version->new('5.012'),
