@@ -1434,6 +1434,9 @@ Adam Kennedy E<lt>adamk@cpan.orgE<gt>
 L<perlver> - the command-line script for running C<Perl::MinimumVersion>
 on your code.
 
+L<Perl::MinimumVersion::Fast> - another module which does the same thing.
+It's a lot faster, but only supports Perl 5.8.1+.
+
 L<http://ali.as/>, L<PPI>, L<version>
 
 =head1 REPOSITORY
