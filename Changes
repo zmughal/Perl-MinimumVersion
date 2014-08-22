@@ -1,5 +1,9 @@
 Revision history for Perl module Perl::MinimumVersion
 
+1.38 2014-08-22
+    - The doc for Perl::MinimumVersion now mentions perlver in both
+      the DESCRIPTION and SEE ALSO sections. RT#98262 from pagenyon++.
+
 1.37 2014-05-11
     - Removed the check for "stacked labels" that I added in 1.36, as it appears
       that I misinterpreted what the 5.14 change was, and broke at least one dist.
