@@ -122,7 +122,7 @@ BEGIN {
 	);
 	@CHECKS_RV = ( #subs that return version
 	    '_feature_bundle','_regex','_each_argument','_binmode_2_arg',
-        '_scheduled_blocks',
+        '_scheduled_blocks', '_experimental_bundle'
 	);
 
 	# Predefine some indexes needed by various check methods
@@ -599,6 +599,40 @@ sub _feature_bundle {
 		$_[1]->pragma eq 'feature'            or return '';
 		my @child = $_[1]->schildren;
 		my @args = @child[1..$#child]; # skip 'use', 'feature' and ';'
+		foreach my $arg (@args) {
+		    my $v = 0;
+		    $v = $1 if ($arg->content =~ /:(5\.\d+)(?:\.\d+)?/);
+		    $v = max($v, $feature{$1}) if ($arg->content =~ /\b($feature_regexp)\b/);
+			#
+			if ($v and $v > ($version || 0) ) {
+				$version = $v;
+				$obj = $_[1];
+			}
+		}
+		return '';
+	} );
+	return (defined($version)?"$version.0":undef, $obj);
+}
+
+my %experimental =
+(
+    'signatures'   => '5.019009',
+     array_base    => 5,
+     autoderef     => 5.014000,
+     lexical_topic => 5.010000,
+     regex_sets    => 5.018000,
+     smartmatch    => 5.010001,
+     signatures    => 5.019009,
+);
+my $experimental_regexp = join('|', keys %feature);
+sub _experimental_bundle {
+    my @versions;
+    my ($version, $obj);
+	shift->Document->find( sub {
+		$_[1]->isa('PPI::Statement::Include') or return '';
+		$_[1]->pragma eq 'experimental'       or return '';
+		my @child = $_[1]->schildren;
+		my @args = @child[1..$#child]; # skip 'use', 'experimental' and ';'
 		foreach my $arg (@args) {
 		    my $v = 0;
 		    $v = $1 if ($arg->content =~ /:(5\.\d+)(?:\.\d+)?/);
