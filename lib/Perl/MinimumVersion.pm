@@ -51,9 +51,9 @@ use List::Util          1.20    qw(max first);
 use Params::Util        0.25    ('_INSTANCE', '_CLASS');
 use PPI::Util                   ('_Document');
 use PPI                 1.215   ();
-use Perl::Critic::Utils 1.104   qw{
+use PPIx::Utils                 qw{
 	:classification
-	:ppi
+	:traversal
 };
 use PPIx::Regexp        0.033;
 use Perl::MinimumVersion::Reason ();
