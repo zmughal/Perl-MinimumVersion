@@ -614,38 +614,54 @@ sub _feature_bundle {
 	return (defined($version)?"$version.0":undef, $obj);
 }
 
+# list copied from experimental.pm v0.019 itself
 my %experimental =
 (
-    'signatures'   => '5.019009',
-     array_base    => 5,
-     autoderef     => 5.014000,
-     lexical_topic => 5.010000,
-     regex_sets    => 5.018000,
-     smartmatch    => 5.010001,
-     signatures    => 5.019009,
+    array_base      => '5',
+    autoderef       => '5.14',
+    bitwise         => '5.22',
+    const_attr      => '5.22',
+    current_sub     => '5.16',
+    evalbytes       => '5.16',
+    fc              => '5.16',
+    lexical_topic   => '5.10',
+    lexical_subs    => '5.18',
+    postderef       => '5.20',
+    postderef_qq    => '5.20',
+    refaliasing     => '5.22',
+    regex_sets      => '5.18',
+    say             => '5.10',
+    smartmatch      => '5.10',
+    signatures      => '5.20',
+    state           => '5.10',
+    switch          => '5.10',
+    unicode_eval    => '5.16',
+    unicode_strings => '5.12',
 );
-my $experimental_regexp = join('|', keys %feature);
+my $experimental_regexp = join('|', keys %experimental);
 sub _experimental_bundle {
-    my @versions;
     my ($version, $obj);
-	shift->Document->find( sub {
-		$_[1]->isa('PPI::Statement::Include') or return '';
-		$_[1]->pragma eq 'experimental'       or return '';
-		my @child = $_[1]->schildren;
-		my @args = @child[1..$#child]; # skip 'use', 'experimental' and ';'
-		foreach my $arg (@args) {
-		    my $v = 0;
-		    $v = $1 if ($arg->content =~ /:(5\.\d+)(?:\.\d+)?/);
-		    $v = max($v, $feature{$1}) if ($arg->content =~ /\b($feature_regexp)\b/);
-			#
-			if ($v and $v > ($version || 0) ) {
-				$version = $v;
-				$obj = $_[1];
-			}
-		}
-		return '';
-	} );
-	return (defined($version)?"$version.0":undef, $obj);
+
+    shift->Document->find( sub {
+        return '' unless $_[1]->isa('PPI::Statement::Include') 
+                     and $_[1]->pragma eq 'experimental';
+
+        my @child = $_[1]->schildren;
+        my @args = @child[1..$#child]; # skip 'use', 'experimental' and ';'
+        foreach my $arg (@args) {
+            my $v = 0;
+            $v = $1 if ($arg->content =~ /:(5\.\d+)(?:\.\d+)?/);
+            $v = max($v, $experimental{$1}) if ($arg->content =~ /\b($experimental_regexp)\b/);
+
+            if ($v and $v > ($version || 0) ) {
+                $version = $v;
+                $obj = $_[1];
+            }
+        }
+        return '';
+    } );
+
+    return (defined($version)?"$version.0":undef, $obj);
 }
 
 my %SCHEDULED_BLOCK =
