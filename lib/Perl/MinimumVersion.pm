@@ -578,6 +578,8 @@ sub version_markers {
 
 my %feature =
 (
+    'say'               => '5.10',
+    'smartmatch'        => '5.10',
     'state'             => '5.10',
     'switch'            => '5.10',
     'unicode_strings'   => '5.14',
@@ -587,6 +589,11 @@ my %feature =
     'array_base'        => '5.16', #defined only in 5.16
     'fc'                => '5.16',
     'lexical_subs'      => '5.18',
+    'postderef'         => '5.20',
+    'postderef_qq'      => '5.20',
+    'signatures'        => '5.20',
+    'refaliasing'       => '5.22',
+    'bitwise'           => '5.22',
 );
 my $feature_regexp = join('|', keys %feature);
 
