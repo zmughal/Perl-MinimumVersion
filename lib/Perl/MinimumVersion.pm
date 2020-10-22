@@ -594,6 +594,8 @@ my %feature =
     'signatures'        => '5.20',
     'refaliasing'       => '5.22',
     'bitwise'           => '5.22',
+    'declared_refs'     => '5.26',
+    'isa'               => '5.32',
 );
 my $feature_regexp = join('|', keys %feature);
 
@@ -630,7 +632,9 @@ my %experimental =
     const_attr      => '5.22',
     current_sub     => '5.16',
     evalbytes       => '5.16',
+    declared_refs   => '5.26',
     fc              => '5.16',
+    isa             => '5.32',
     lexical_topic   => '5.10',
     lexical_subs    => '5.18',
     postderef       => '5.20',
