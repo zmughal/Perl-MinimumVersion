@@ -367,7 +367,7 @@ The C<minimum_syntax_version> method will explicitly test only the
 Document's syntax to determine it's minimum version, to the extent
 that this is possible.
 
-It takes an optional parameter of a L<version> object defining the
+It takes an optional parameter of a L<version> object defining
 the lowest known current value. For example, if it is already known
 that it must be 5.006 or higher, then you can provide a param of
 qv(5.006) and the method will not run any of the tests below this
@@ -375,7 +375,7 @@ version. This should provide dramatic speed improvements for
 large and/or complex documents.
 
 The limitations of parsing Perl mean that this method may provide
-artifically low results, but should not artificially high results.
+artificially low results, but should not artificially high results.
 
 For example, if C<minimum_syntax_version> returned 5.006, you can be
 confident it will not run on anything lower, although there is a chance
@@ -1172,7 +1172,7 @@ sub _perl_5005_pragmas {
 }
 
 # A number of modules are highly indicative of using techniques
-# that are themselves version-dependant.
+# that are themselves version-dependent.
 sub _perl_5005_modules {
 	shift->Document->find_first( sub {
 		$_[1]->isa('PPI::Statement::Include')
