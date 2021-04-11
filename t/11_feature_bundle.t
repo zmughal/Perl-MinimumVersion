@@ -29,6 +29,8 @@ my %examples=(
     q{use feature 'signatures';} => '5.20.0',
     q{use feature 'refaliasing';} => '5.22.0',
     q{use feature 'bitwise';} => '5.22.0',
+    q{use feature 'declared_refs';} => '5.26.0',
+    q{use feature 'isa';} => '5.32.0',
 );
 plan tests => scalar(keys %examples);
 foreach my $example (sort keys %examples) {
