@@ -596,6 +596,7 @@ my %feature =
     'bitwise'           => '5.22',
     'declared_refs'     => '5.26',
     'isa'               => '5.32',
+    'indirect'          => '5.32', #defined only in 5.32
 );
 my $feature_regexp = join('|', keys %feature);
 
