@@ -623,7 +623,7 @@ sub _feature_bundle {
 	return (defined($version)?"$version.0":undef, $obj);
 }
 
-# list copied from experimental.pm v0.019 itself
+# list copied from experimental.pm v0.021 itself
 my %experimental =
 (
     array_base      => '5',
@@ -631,8 +631,8 @@ my %experimental =
     bitwise         => '5.22',
     const_attr      => '5.22',
     current_sub     => '5.16',
-    evalbytes       => '5.16',
     declared_refs   => '5.26',
+    evalbytes       => '5.16',
     fc              => '5.16',
     isa             => '5.32',
     lexical_topic   => '5.10',
