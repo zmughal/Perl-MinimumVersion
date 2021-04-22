@@ -1,5 +1,8 @@
 Revision history for Perl module Perl::MinimumVersion
 
+1.40 2021-04-21
+    - No changes from 1.39
+
 1.39 2021-04-11 (TRIAL RELEASE)
     - Features enabled via the 'experimental' pragma are now recognized (GH#5)
     - Depend on PPIx::Utils instead of Perl::Critic::Utils (GH#6)
