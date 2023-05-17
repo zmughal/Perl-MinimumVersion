@@ -1,6 +1,6 @@
 Revision history for Perl module Perl::MinimumVersion
 
-1.41
+1.41 2023-05-17 (TRIAL RELEASE)
     - Remove detection for Perl versions 5.008 and older. This means that 5.008 is now the
       minimum required version that will be reported. (GH#7)
     - Fix formatting of the summary printed by the perlver script (GH#14)
