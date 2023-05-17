@@ -21,7 +21,7 @@ version of perl required to be able to run it. Because it is based on
 L<PPI>, it can do this without having to actually load the code.
 
 Currently it tests both the syntax of your code, and the use of explicit
-version dependencies such as C<require 5.005>.
+version dependencies such as C<require 5.008>.
 
 Future plans are to also add support for tracing module dependencies.
 
@@ -87,8 +87,8 @@ that this is possible.
 
 It takes an optional parameter of a L<version> object defining
 the lowest known current value. For example, if it is already known
-that it must be 5.008 or higher, then you can provide a param of
-qv(5.008) and the method will not run any of the tests below this
+that it must be 5.010 or higher, then you can provide a param of
+qv(5.010) and the method will not run any of the tests below this
 version. This should provide dramatic speed improvements for
 large and/or complex documents.
 
