@@ -18,7 +18,7 @@ my %examples=(
     my $var = <<HEREDOC;
 My text.
 HEREDOC
-    } => '5.008',
+    } => '5.006',
 );
 
 plan tests => scalar keys %examples;
